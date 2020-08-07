@@ -14,5 +14,5 @@ echo "Docker ID and Image: $dockerpath"
 docker login
 # Step 3:
 # Push image to a docker repository
-docker tag app $dockerpath
-docker push $dockerpath
+docker tag d8508a9b6ca6 omary/app:firstry
+docker push omary/app
