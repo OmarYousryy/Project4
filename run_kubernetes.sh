@@ -6,15 +6,17 @@
 # Step 1:
 # This is your Docker ID/path
 # dockerpath=<>
-dockerpath="omary/app:firsttry"
+dockerpath=omary/test
 # Step 2
 # Run the Docker Hub container with kubernetes
-kubectl run appkkk --generator=run-pod/v1 --image=$dockerpath --port=80 --labels app=appkkk
+kubectl run api\
+    --generator=run-pod/v1\
+    --image=$dockerpath\
+    --port=80 --labels app=api
 
 # Step 3:
 # List kubernetes pods
 kubectl get pods
-
 # Step 4:
 # Forward the container port to a host
-kubectl port-forward appkkk 8000:80
+kubectl port-forward api 8000:80
