@@ -1,3 +1,4 @@
+  
 #!/usr/bin/env bash
 # This file tags and uploads an image to Docker Hub
 
@@ -6,13 +7,12 @@
 # Step 1:
 # Create dockerpath
 # dockerpath=<your docker ID/path>
-dockerpath= omary/app
-
+dockerpath=https://hub.docker.com/repository/docker/omary/test/
 # Step 2:  
 # Authenticate & tag
 echo "Docker ID and Image: $dockerpath"
-docker login
+docker tag python:3.7.3-stretch omary/test
+
 # Step 3:
 # Push image to a docker repository
-docker tag d8508a9b6ca6 omary/app:firstry
-docker push omary/app
+docker push omary/test
