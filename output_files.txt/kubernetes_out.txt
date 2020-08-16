@@ -1,0 +1,43 @@
+Port: 8000
+{
+  "prediction": [
+    20.35373177134412
+  ]
+}
+
+(.devops) ec2-user:~/environment/project (master) $ kubectl config view
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority: /home/ec2-user/.minikube/ca.crt
+    server: https://172.17.0.2:8443
+  name: minikube
+contexts:
+- context:
+    cluster: minikube
+    user: minikube
+  name: minikube
+current-context: minikube
+kind: Config
+preferences: {}
+users:
+- name: minikube
+  user:
+    client-certificate: /home/ec2-user/.minikube/profiles/minikube/client.crt
+    client-key: /home/ec2-user/.minikube/profiles/minikube/client.key
+(.devops) ec2-user:~/environment/project (master) $ ./run_kubernetes.sh 
+Flag --generator has been deprecated, has no effect and will be removed in the future.
+pod/api created
+NAME   READY   STATUS              RESTARTS   AGE
+api    0/1     ContainerCreating   0          0s
+error: unable to forward port because pod is not running. Current status=Pending
+(.devops) ec2-user:~/environment/project (master) $ kubectl get pods 
+NAME   READY   STATUS              RESTARTS   AGE
+api    0/1     ContainerCreating   0          14s
+(.devops) ec2-user:~/environment/project (master) $ kubectl get pods 
+NAME   READY   STATUS    RESTARTS   AGE
+api    1/1     Running   0          39s
+(.devops) ec2-user:~/environment/project (master) $ kubectl port-forward api 8000:80
+Forwarding from 127.0.0.1:8000 -> 80
+Forwarding from [::1]:8000 -> 80
+Handling connection for 8000
